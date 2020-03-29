@@ -147,21 +147,16 @@ class StreamlinedDatascraper:
             download_path = directory2.joinpath(f"{media_link.split('/')[-2]}.jpg")
             if download_path.is_file():
                 continue
-            response = await authed.session_manager.json_request(
-                media_link, method="HEAD"
-            )
-            if not response:
-                continue
             if not progress_bar:
                 progress_bar = main_helper.download_session()
                 progress_bar.start(unit="B", unit_scale=True, miniters=1)
-            progress_bar.update_total_size(response.content_length)
             response = await authed.session_manager.json_request(
                 media_link,
                 session,
                 stream=True,
                 json_format=False,
             )
+            progress_bar.update_total_size(response.content_length)
             await main_helper.write_data(response, download_path, progress_bar)
         await session.close()
         if progress_bar:

@@ -224,51 +224,20 @@ async def async_downloads(
             read_timeout=None,
         ) as session:
             tasks = []
-            # Get content_lengths
-            for download_item in download_list:
-                link = download_item.link
-                if link:
-                    task = asyncio.ensure_future(
-                        session_m.json_request(
-                            download_item.link,
-                            session,
-                            method="HEAD",
-                            json_format=False,
-                        )
-                    )
-                    tasks.append(task)
-            responses = await asyncio.gather(*tasks)
-            tasks.clear()
 
             async def check(
-                download_item: template_media_table, response: ClientResponse
+                download_item: template_media_table
             ):
                 filepath = os.path.join(download_item.directory, download_item.filename)
-                response_status = False
-                if response.status == 200:
-                    response_status = True
-                    if response.content_length:
-                        download_item.size = response.content_length
 
                 if os.path.exists(filepath):
-                    if os.path.getsize(filepath) == response.content_length:
-                        download_item.downloaded = True
-                    else:
-                        return download_item
+                    download_item.downloaded = True
                 else:
-                    if response_status:
-                        return download_item
+                    return download_item
 
             for download_item in download_list:
-                temp_response = [
-                    response
-                    for response in responses
-                    if response and str(response.url) == download_item.link
-                ]
-                if temp_response:
-                    temp_response = temp_response[0]
-                    task = check(download_item, temp_response)
-                    tasks.append(task)
+                task = check(download_item)
+                tasks.append(task)
             result = await asyncio.gather(*tasks)
             download_list = [x for x in result if x]
             tasks.clear()
@@ -276,7 +245,6 @@ async def async_downloads(
             if download_list:
                 progress_bar = download_session()
                 progress_bar.start(unit="B", unit_scale=True, miniters=1)
-                [progress_bar.update_total_size(x.size) for x in download_list]
 
             async def process_download(download_item: template_media_table):
                 while True:
@@ -725,14 +693,14 @@ def are_long_paths_enabled():
     return bool(ntdll.RtlAreLongPathsEnabled())
 
 
-def check_for_dupe_file(download_path, content_length):
-    found = False
-    if os.path.isfile(download_path):
-        content_length = int(content_length)
-        local_size = os.path.getsize(download_path)
-        if local_size == content_length:
-            found = True
-    return found
+def check_for_dupe_file(download_path, content_length=None):
+    if not os.path.isfile(download_path):
+        return False
+
+    if content_length is None:
+        return True
+
+    return os.path.getsize(download_path) == int(content_length)
 
 
 class download_session(tqdm):
