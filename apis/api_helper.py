@@ -262,6 +262,9 @@ class session_manager:
                     stream=True,
                 )
             )
+            if response:
+                download_item.size = response.content_length
+                progress_bar.update_total_size(download_item.size)
             if response and response.status != 200:
                 if response.content_length:
                     progress_bar.update_total_size(-response.content_length)
