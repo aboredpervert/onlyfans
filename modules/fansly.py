@@ -290,24 +290,18 @@ async def profile_scraper(
             filename: str = media_options["filename"].replace("..", ".")
             download_path = os.path.join(directory2, filename)
             media_link: str = media_options["locations"][0]["location"]
-            response = await authed.session_manager.json_request(
-                media_link, method="HEAD"
-            )
-            if not response:
-                continue
             if os.path.isfile(download_path):
-                if os.path.getsize(download_path) == response.content_length:
-                    continue
+                continue
             if not progress_bar:
                 progress_bar = main_helper.download_session()
                 progress_bar.start(unit="B", unit_scale=True, miniters=1)
-            progress_bar.update_total_size(response.content_length)
             response = await authed.session_manager.json_request(
                 media_link,
                 session=session,
                 stream=True,
                 json_format=False,
             )
+            progress_bar.update_total_size(response.content_length)
             downloaded = await main_helper.write_data(
                 response, download_path, progress_bar
             )
