@@ -949,26 +949,42 @@ def is_me(user_api):
     else:
         return False
 
+def try_unlink(path: str):
+    try:
+        os.unlink(path)
+    except FileNotFoundError:
+        pass
 
 async def write_data(response: ClientResponse, download_path: str, progress_bar):
     status_code = 0
     if response.status == 200:
         total_length = 0
         os.makedirs(os.path.dirname(download_path), exist_ok=True)
-        with open(download_path, "wb") as f:
-            try:
-                async for data in response.content.iter_chunked(4096):
-                    length = len(data)
-                    total_length += length
-                    progress_bar.update(length)
-                    f.write(data)
-            except (
-                ClientPayloadError,
-                ContentTypeError,
-                ClientOSError,
-                ServerDisconnectedError,
-            ) as e:
-                status_code = 1
+        partial_path = download_path + ".part"
+        try_unlink(partial_path)
+        try:
+            with open(partial_path, "wb") as f:
+                try:
+                    async for data in response.content.iter_chunked(4096):
+                        length = len(data)
+                        total_length += length
+                        progress_bar.update(length)
+                        f.write(data)
+                except (
+                    ClientPayloadError,
+                    ContentTypeError,
+                    ClientOSError,
+                    ServerDisconnectedError,
+                ) as e:
+                    status_code = 1
+        except Exception:
+            try_unlink(partial_path)
+            raise
+        else:
+            if status_code:
+                try_unlink(partial_path)
+            else:
+                os.replace(partial_path, download_path)
     else:
         if response.content_length:
             progress_bar.update_total_size(-response.content_length)
