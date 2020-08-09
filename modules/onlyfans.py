@@ -92,6 +92,9 @@ class OnlyFansDataScraper(StreamlinedDatascraper):
                         continue
             final_text = rawText if rawText else text
 
+            if getattr(post_result, "expiredAt", None) is not None:
+                continue
+
             if date == "-001-11-30T00:00:00+00:00":
                 date_string = master_date
                 date_object = datetime.strptime(master_date, "%d-%m-%Y %H:%M:%S")
