@@ -202,7 +202,7 @@ Types: str|int
 
 Usage: You can automatically choose which site you want to scrape.
 
-    Default = ""
+    Default = "onlyfans"
 
     OnlyFans = "onlyfans"
 
@@ -211,7 +211,7 @@ Types: list|int|str|bool
 
 Usage: You can automatically choose which media type you want to scrape.
 
-    Default = ""
+    Default = "0"
 
     Inputs: Images, Videos, etc
     Inputs: 0,1,etc
