@@ -41,7 +41,7 @@ class SiteSettings:
 
         class browser:
             def __init__(self, option: dict[str, bool] = {}) -> None:
-                self.auth = option.get("auth", True)
+                self.auth = option.get("auth", False)
 
         class metadata:
             def __init__(self, option: dict[str, bool] = {}) -> None:
