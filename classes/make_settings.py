@@ -154,7 +154,7 @@ class config(object):
 
                         class browser:
                             def __init__(self, option={}) -> None:
-                                self.auth = option.get("auth", True)
+                                self.auth = option.get("auth", False)
 
                         class database:
                             def __init__(self, option={}) -> None:
