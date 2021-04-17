@@ -151,11 +151,12 @@ The list below are unique identifiers that you must include.
 
 You must choose one or more.
 
-    Default = "{filename}.{ext}"
-    Default Translated = "5fb5a5e4b4ce6c47ce2b4_source.mp4"
+    Default = "{model_username}-{date}-{media_id}.{ext}"
+    Default Translated = "belledelphine-2021-04-16-133742069.mp4"
 
-    {filename} = 5fb5a5e4b4ce6c47ce2b4_source
-    {media_id} = 133742069
+    {model_username} = belledelphine
+    {date}           = 2021-04-16
+    {media_id}       = 133742069
 
 ### metadata_directory_format:
 
@@ -245,11 +246,7 @@ Types: list|int|str|bool
 
 ### date_format:
 
-    Default = "%d-%m-%Y"
-
-    If you live in the USA and you want to use the incorrect format, use the following:
-
-    "%m-%d-%Y"
+    Default = "%Y-%m-%d"
 
 ### max_threads:
 
