@@ -24,7 +24,7 @@ class config(object):
                 self.version = 7.2
 
         class Settings(object):
-            def __init__(self, auto_site_choice="", profile_directories=[".profiles"], export_type="json", max_threads=-1, min_drive_space=0, helpers={}, webhooks={}, exit_on_completion=False, infinite_loop=True, loop_timeout="0", dynamic_rules_link="https://raw.githubusercontent.com/DATAHOARDERS/dynamic-rules/main/onlyfans.json", proxies=[], cert="",  random_string=""):
+            def __init__(self, auto_site_choice="onlyfans", profile_directories=[".profiles"], export_type="json", max_threads=-1, min_drive_space=0, helpers={}, webhooks={}, exit_on_completion=True, infinite_loop=True, loop_timeout="0", dynamic_rules_link="https://raw.githubusercontent.com/DATAHOARDERS/dynamic-rules/main/onlyfans.json", proxies=[], cert="", random_string=""):
                 class webhooks_settings:
                     def __init__(self, option={}) -> None:
                         class webhook_template:
@@ -140,11 +140,11 @@ class config(object):
                                 self.comments = option.get(
                                     'comments', True)
                         self.auto_profile_choice: Union[List] = option.get(
-                            'auto_profile_choice', [])
+                            'auto_profile_choice', ["default"])
                         self.auto_model_choice = option.get(
                             'auto_model_choice', False)
                         self.auto_media_choice = option.get(
-                            'auto_media_choice', "")
+                            'auto_media_choice', "0")
                         self.auto_api_choice = option.get(
                             'auto_api_choice', True)
                         self.browser = browser(option.get(
@@ -207,11 +207,11 @@ class config(object):
                                 self.comments = option.get(
                                     'comments', True)
                         self.auto_profile_choice: Union[List] = option.get(
-                            'auto_profile_choice', [])
+                            'auto_profile_choice', ["default"])
                         self.auto_model_choice = option.get(
                             'auto_model_choice', False)
                         self.auto_media_choice = option.get(
-                            'auto_media_choice', "")
+                            'auto_media_choice', "0")
                         self.auto_api_choice = option.get(
                             'auto_api_choice', True)
                         self.browser = browser(option.get(
@@ -274,11 +274,11 @@ class config(object):
                                 self.comments = option.get(
                                     'comments', True)
                         self.auto_profile_choice: Union[List] = option.get(
-                            'auto_profile_choice', [])
+                            'auto_profile_choice', ["default"])
                         self.auto_model_choice = option.get(
                             'auto_model_choice', False)
                         self.auto_media_choice = option.get(
-                            'auto_media_choice', "")
+                            'auto_media_choice', "0")
                         self.auto_api_choice = option.get(
                             'auto_api_choice', True)
                         self.browser = browser(option.get(
