@@ -157,7 +157,7 @@ class config(object):
                         self.file_directory_format = normpath(option.get(
                             'file_directory_format', "{site_name}/{model_username}/{api_type}/{value}/{media_type}"))
                         self.filename_format = normpath(option.get(
-                            'filename_format', "{filename}.{ext}"))
+                            'filename_format', "{model_username}-{date}-{media_id}.{ext}"))
                         self.metadata_directories = option.get(
                             'metadata_directories', [".sites"])
                         self.metadata_directory_format = normpath(option.get(
@@ -170,7 +170,7 @@ class config(object):
                         self.overwrite_files = option.get(
                             'overwrite_files', False)
                         self.date_format = option.get(
-                            'date_format', "%d-%m-%Y")
+                            'date_format', "%Y-%m-%d")
                         self.ignored_keywords = option.get(
                             'ignored_keywords', [])
                         self.ignore_type = option.get(
@@ -224,7 +224,7 @@ class config(object):
                         self.file_directory_format = normpath(option.get(
                             'file_directory_format', "{site_name}/{model_username}/{api_type}/{value}/{media_type}"))
                         self.filename_format = normpath(option.get(
-                            'filename_format', "{filename}.{ext}"))
+                            'filename_format', "{model_username}-{date}-{media_id}.{ext}"))
                         self.metadata_directories = option.get(
                             'metadata_directories', [".sites"])
                         self.metadata_directory_format = normpath(option.get(
@@ -237,7 +237,7 @@ class config(object):
                         self.overwrite_files = option.get(
                             'overwrite_files', False)
                         self.date_format = option.get(
-                            'date_format', "%d-%m-%Y")
+                            'date_format', "%Y-%m-%d")
                         self.ignored_keywords = option.get(
                             'ignored_keywords', [])
                         self.ignore_type = option.get(
@@ -290,7 +290,7 @@ class config(object):
                         self.file_directory_format = normpath(option.get(
                             'file_directory_format', "{site_name}/{model_username}/{api_type}/{value}/{media_type}"))
                         self.filename_format = normpath(option.get(
-                            'filename_format', "{filename}.{ext}"))
+                            'filename_format', "{model_username}-{date}-{media_id}.{ext}"))
                         self.metadata_directories = option.get(
                             'metadata_directories', [".sites"])
                         self.metadata_directory_format = normpath(option.get(
@@ -303,7 +303,7 @@ class config(object):
                         self.overwrite_files = option.get(
                             'overwrite_files', False)
                         self.date_format = option.get(
-                            'date_format', "%d-%m-%Y")
+                            'date_format', "%Y-%m-%d")
                         self.ignored_keywords = option.get(
                             'ignored_keywords', [])
                         self.ignore_type = option.get(
