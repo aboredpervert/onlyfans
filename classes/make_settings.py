@@ -49,7 +49,7 @@ class SiteSettings:
                 self.comments = option.get("comments", True)
 
         self.auto_profile_choice: list[int | str] | int | str | bool = option.get(
-            "auto_profile_choice", []
+            "auto_profile_choice", ["default"]
         )
         self.auto_model_choice: list[int | str] | int | str | bool = option.get(
             "auto_model_choice", False
@@ -58,7 +58,7 @@ class SiteSettings:
             "auto_api_choice", True
         )
         self.auto_media_choice: list[int | str] | int | str | bool = option.get(
-            "auto_media_choice", ""
+            "auto_media_choice", "0"
         )
         self.browser = browser(option.get("browser", {}))
         self.jobs = jobs(option.get("jobs", {}))
@@ -134,14 +134,14 @@ class SiteSettings:
 class Settings(object):
     def __init__(
         self,
-        auto_site_choice: str = "",
+        auto_site_choice: str = "onlyfans",
         profile_directories: list[str] = [".profiles"],
         export_type: str = "json",
         max_threads: int = -1,
         min_drive_space: int = 0,
         helpers: dict[str, bool] = {},
         webhooks: dict[str, Any] = {},
-        exit_on_completion: bool = False,
+        exit_on_completion: bool = True,
         infinite_loop: bool = True,
         loop_timeout: int = 0,
         dynamic_rules_link: str = "https://raw.githubusercontent.com/DATAHOARDERS/dynamic-rules/main/onlyfans.json",

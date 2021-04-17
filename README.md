@@ -197,7 +197,7 @@ Types: list|str|bool
 
 Usage: You can automatically choose which site you want to scrape.
 
-    Default = ""
+    Default = "onlyfans"
 
     Inputs: onlyfans, fansly, starsavn
 
@@ -206,7 +206,7 @@ Types: list|str|bool
 
 Usage: You can automatically choose which media type you want to scrape.
 
-    Default = ""
+    Default = "0"
 
     Inputs: All, Images, Videos, etc
 
