@@ -30,14 +30,14 @@ class config(object):
         class Settings(object):
             def __init__(
                 self,
-                auto_site_choice="",
+                auto_site_choice="onlyfans",
                 profile_directories=[".profiles"],
                 export_type="json",
                 max_threads=-1,
                 min_drive_space=0,
                 helpers={},
                 webhooks={},
-                exit_on_completion=False,
+                exit_on_completion=True,
                 infinite_loop=True,
                 loop_timeout="0",
                 dynamic_rules_link="https://raw.githubusercontent.com/DATAHOARDERS/dynamic-rules/main/onlyfans.json",
@@ -162,10 +162,10 @@ class config(object):
                                 self.comments = option.get("comments", True)
 
                         self.auto_profile_choice: Union[List] = option.get(
-                            "auto_profile_choice", []
+                            "auto_profile_choice", ["default"]
                         )
                         self.auto_model_choice = option.get("auto_model_choice", False)
-                        self.auto_media_choice = option.get("auto_media_choice", "")
+                        self.auto_media_choice = option.get("auto_media_choice", "0")
                         self.auto_api_choice = option.get("auto_api_choice", True)
                         self.browser = browser(option.get("browser", {}))
                         self.jobs = jobs(option.get("jobs", {}))
@@ -228,10 +228,10 @@ class config(object):
                                 self.comments = option.get("comments", True)
 
                         self.auto_profile_choice: Union[List] = option.get(
-                            "auto_profile_choice", []
+                            "auto_profile_choice", ["default"]
                         )
                         self.auto_model_choice = option.get("auto_model_choice", False)
-                        self.auto_media_choice = option.get("auto_media_choice", "")
+                        self.auto_media_choice = option.get("auto_media_choice", "0")
                         self.auto_api_choice = option.get("auto_api_choice", True)
                         self.browser = browser(option.get("browser", {}))
                         self.jobs = jobs(option.get("jobs", {}))
@@ -294,10 +294,10 @@ class config(object):
                                 self.comments = option.get("comments", True)
 
                         self.auto_profile_choice: Union[List] = option.get(
-                            "auto_profile_choice", []
+                            "auto_profile_choice", ["default"]
                         )
                         self.auto_model_choice = option.get("auto_model_choice", False)
-                        self.auto_media_choice = option.get("auto_media_choice", "")
+                        self.auto_media_choice = option.get("auto_media_choice", "0")
                         self.auto_api_choice = option.get("auto_api_choice", True)
                         self.browser = browser(option.get("browser", {}))
                         self.jobs = jobs(option.get("jobs", {}))
