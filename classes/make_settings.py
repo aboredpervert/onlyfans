@@ -180,7 +180,7 @@ class config(object):
                             )
                         )
                         self.filename_format = normpath(
-                            option.get("filename_format", "{filename}.{ext}")
+                            option.get("filename_format", "{model_username}-{date}-{media_id}.{ext}")
                         )
                         self.metadata_directories = option.get(
                             "metadata_directories", [".sites"]
@@ -197,7 +197,7 @@ class config(object):
                         self.text_length = option.get("text_length", 255)
                         self.video_quality = option.get("video_quality", "source")
                         self.overwrite_files = option.get("overwrite_files", False)
-                        self.date_format = option.get("date_format", "%d-%m-%Y")
+                        self.date_format = option.get("date_format", "%Y-%m-%d")
                         self.ignored_keywords = option.get("ignored_keywords", [])
                         self.ignore_type = option.get("ignore_type", "")
                         self.blacklists = option.get("blacklists", "")
@@ -246,7 +246,7 @@ class config(object):
                             )
                         )
                         self.filename_format = normpath(
-                            option.get("filename_format", "{filename}.{ext}")
+                            option.get("filename_format", "{model_username}-{date}-{media_id}.{ext}")
                         )
                         self.metadata_directories = option.get(
                             "metadata_directories", [".sites"]
@@ -263,7 +263,7 @@ class config(object):
                         self.text_length = option.get("text_length", 255)
                         self.video_quality = option.get("video_quality", "source")
                         self.overwrite_files = option.get("overwrite_files", False)
-                        self.date_format = option.get("date_format", "%d-%m-%Y")
+                        self.date_format = option.get("date_format", "%Y-%m-%d")
                         self.ignored_keywords = option.get("ignored_keywords", [])
                         self.ignore_type = option.get("ignore_type", "")
                         self.blacklists = option.get("blacklists", [])
@@ -312,7 +312,7 @@ class config(object):
                             )
                         )
                         self.filename_format = normpath(
-                            option.get("filename_format", "{filename}.{ext}")
+                            option.get("filename_format", "{model_username}-{date}-{media_id}.{ext}")
                         )
                         self.metadata_directories = option.get(
                             "metadata_directories", [".sites"]
@@ -329,7 +329,7 @@ class config(object):
                         self.text_length = option.get("text_length", 255)
                         self.video_quality = option.get("video_quality", "source")
                         self.overwrite_files = option.get("overwrite_files", False)
-                        self.date_format = option.get("date_format", "%d-%m-%Y")
+                        self.date_format = option.get("date_format", "%Y-%m-%d")
                         self.ignored_keywords = option.get("ignored_keywords", [])
                         self.ignore_type = option.get("ignore_type", "")
                         self.blacklists = option.get("blacklists", [])
