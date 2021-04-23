@@ -35,7 +35,11 @@ onlyfans_extras = onlyfans_classes.extras
 import apis.fansly.classes as fansly_classes
 fansly_extras = fansly_classes.extras
 
-path = up(up(os.path.realpath(__file__)))
+import sys
+if getattr(sys, "frozen", False):
+    path = up(sys.executable)
+else:
+    path = up(up(os.path.realpath(__file__)))
 os.chdir(path)
 
 
