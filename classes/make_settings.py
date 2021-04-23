@@ -78,8 +78,8 @@ class config(object):
 
                 class helpers_settings:
                     def __init__(self, option={}) -> None:
-                        self.renamer = option.get("renamer", True)
-                        self.reformat_media = option.get("reformat_media", True)
+                        self.renamer = option.get("renamer", False)
+                        self.reformat_media = option.get("reformat_media", False)
                         self.downloader = option.get("downloader", True)
                         self.delete_empty_directories = option.get(
                             "delete_empty_directories", False
