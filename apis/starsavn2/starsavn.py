@@ -1,3 +1,4 @@
+from sys import exit
 import time
 from typing import Union
 from urllib.parse import urlparse
