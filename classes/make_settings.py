@@ -202,6 +202,7 @@ class config(object):
                         self.ignore_type = option.get("ignore_type", "")
                         self.blacklists = option.get("blacklists", "")
                         self.webhook = option.get("webhook", True)
+                        self.timed_allow = option.get('timed_allow', [])
 
             class Fansly:
                 def __init__(self, module):
