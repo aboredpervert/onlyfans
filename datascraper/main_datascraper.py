@@ -1,6 +1,6 @@
 import os
 import timeit
-from typing import Any, Optional
+from typing import Any, Optional, Union
 
 import helpers.main_helper as main_helper
 import modules.onlyfans as m_onlyfans
@@ -17,7 +17,7 @@ api_helper = OnlyFans.api_helper
 async def start_datascraper(
     json_config: dict[Any,Any],
     site_name_lower: str,
-    api: Optional[OnlyFans.start| Fansly.start| StarsAVN.start] = None,
+    api: Optional[Union[OnlyFans.start, Fansly.start, StarsAVN.start]] = None,
     webhooks:bool=True,
 ) -> Optional[OnlyFans.start]:
     json_settings = json_config["settings"]
@@ -39,8 +39,8 @@ async def start_datascraper(
         print("Unable to create session")
         return None
     archive_time = timeit.default_timer()
-    match site_name_lower:
-        case "onlyfans":
+    if True:
+        if site_name_lower == "onlyfans":
             site_name = "OnlyFans"
             module = m_onlyfans
             if not api:
@@ -103,7 +103,7 @@ async def start_datascraper(
             await main_helper.process_downloads(api, module)
             if webhooks:
                 await main_helper.process_webhooks(api, "download_webhook", "succeeded")
-        case "fansly":
+        elif site_name_lower == "fansly":
             site_name = "Fansly"
             module = m_fansly
             if not api:
@@ -165,7 +165,7 @@ async def start_datascraper(
             await main_helper.process_downloads(api, module)
             if webhooks:
                 await main_helper.process_webhooks(api, "download_webhook", "succeeded")
-        case "starsavn":
+        elif site_name_lower == "starsavn":
             site_name = "StarsAVN"
             module = m_starsavn
             if not api:
