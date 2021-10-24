@@ -15,7 +15,7 @@ from rich.text import Text
 try:
     import tests.main_test as main_test
 except SyntaxError:
-    print("Execute the script with Python 3.10\nPress enter to continue")
+    print("Execute the script with Python 3.9\nPress enter to continue")
     exit()
 try:
 

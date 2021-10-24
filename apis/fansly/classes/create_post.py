@@ -44,14 +44,14 @@ class create_post:
         final_media_ids: list[Any] = []
         for attachment in self.attachments:
             attachment_content_id = attachment["contentId"]
-            match attachment["contentType"]:
-                case 1:
+            if True:
+                if attachment["contentType"] == 1:
                     final_media_ids.append(attachment_content_id)
-                case 2:
+                elif attachment["contentType"] == 2:
                     for bundle in extra["accountMediaBundles"]:
                         if bundle["id"] == attachment_content_id:
                             final_media_ids.extend(bundle["accountMediaIds"])
-                case _:
+                else:
                     print
         if final_media_ids:
             for final_media_id in final_media_ids:

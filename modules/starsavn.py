@@ -188,37 +188,37 @@ def scrape_choice(authed: create_auth, subscription:create_user):
     only_links = False
     mandatory = [download_directory, only_links]
     y = ["photo", "video", "stream", "gif", "audio", "text"]
-    u_array:list[str|list[Any]] = [
+    u_array:list[Union[str, list[Any]]] = [
         "You have chosen to scrape {}",
         [user_api, media_types, *mandatory, post_count],
         "Profile",
     ]
-    s_array:list[str|list[Any]] = [
+    s_array:list[Union[str, list[Any]]] = [
         "You have chosen to scrape {}",
         [stories_api, media_types, *mandatory, post_count],
         "Stories",
     ]
-    h_array :list[str|list[Any]]= [
+    h_array :list[Union[str, list[Any]]]= [
         "You have chosen to scrape {}",
         [list_highlights, media_types, *mandatory, post_count],
         "Highlights",
     ]
-    p_array:list[str|list[Any]] = [
+    p_array:list[Union[str, list[Any]]] = [
         "You have chosen to scrape {}",
         [post_api, media_types, *mandatory, post_count],
         "Posts",
     ]
-    pd_array :list[str|list[Any]]= [
+    pd_array :list[Union[str, list[Any]]]= [
         "You have chosen to scrape {}",
         [media_api, media_types, *mandatory, media_count],
         "Products",
     ]
-    m_array :list[str|list[Any]]= [
+    m_array :list[Union[str, list[Any]]]= [
         "You have chosen to scrape {}",
         [message_api, media_types, *mandatory, post_count],
         "Messages",
     ]
-    a_array:list[str|list[Any]] = [
+    a_array:list[Union[str, list[Any]]] = [
         "You have chosen to scrape {}",
         [archived_api, media_types, *mandatory, archived_count],
         "Archived",
@@ -1330,7 +1330,7 @@ async def manage_subscriptions(
 
 
 def format_options(
-    f_list: list[create_auth | create_user | SimpleNamespace | dict[str, Any] | str],
+    f_list: list[Union[create_auth, create_user, SimpleNamespace, dict[str, Any], str]],
     choice_type: str,
     match_list: list[str] = [],
 ) -> list:
@@ -1345,13 +1345,13 @@ def format_options(
 
     count = 0
     names: list[
-        list[create_auth | create_user | SimpleNamespace | dict[str, Any] | str]
+        list[Union[create_auth, create_user, SimpleNamespace, dict[str, Any], str]]
     ] = []
     string = ""
     separator = " | "
     if name_count > 1:
-        match choice_type:
-            case "users":
+        if True:
+            if choice_type == "users":
                 for auth in f_list:
                     if not isinstance(auth, create_auth):
                         name = getattr(auth, "username", "")
@@ -1362,7 +1362,7 @@ def format_options(
                     if count + 1 != name_count:
                         string += separator
                     count += 1
-            case "usernames":
+            elif choice_type == "usernames":
                 auth_count = 0
                 for x in f_list:
                     if isinstance(x, create_auth) or isinstance(x, dict):
@@ -1376,7 +1376,7 @@ def format_options(
                         string += separator
                     count += 1
                     auth_count += 1
-            case "apis":
+            elif choice_type == "apis":
                 names = f_list
                 for api in f_list:
                     if isinstance(api, SimpleNamespace):

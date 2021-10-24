@@ -7,8 +7,8 @@ os.chdir(path)
 
 def version_check():
     version_info = sys.version_info
-    if version_info < (3, 10):
-        string = "Execute the script with Python 3.10\nPress enter to continue"
+    if version_info < (3, 9):
+        string = "Execute the script with Python 3.9\nPress enter to continue"
         input(string)
         exit(0)
 # Updating any outdated config values
@@ -54,16 +54,16 @@ def check_profiles():
         auth_filepath = os.path.join(default_profile_directory, "auth.json")
         if not os.path.exists(auth_filepath):
             new_item = {}
-            match string_match:
-                case "OnlyFans":
+            if True:
+                if string_match == "OnlyFans":
                     new_item["auth"] = onlyfans_auth_details().export()
                 
-                case "Fansly":
+                elif string_match == "Fansly":
                     new_item["auth"] = fansly_auth_details().export()
 
-                case "StarsAVN":
+                elif string_match == "StarsAVN":
                     new_item["auth"] = starsavn_auth_details().export()
-                case _:
+                else:
                     continue
             main_helper.export_data(new_item, auth_filepath)
             main_helper.prompt_modified(

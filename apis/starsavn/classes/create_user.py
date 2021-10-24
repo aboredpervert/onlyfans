@@ -549,7 +549,7 @@ class create_user:
     def set_scraped(self, name, scraped):
         setattr(self.scraped, name, scraped)
     def finalize_content_set(self,results:list[dict[str,Any]]):
-        final_results:list[create_post|create_product] = []
+        final_results:list[Union[create_post, create_product]] = []
         for result in results:
             result["media"] = [result["media"]] if isinstance(result["media"], dict) else result["media"]
             if "mediaSet" in result:

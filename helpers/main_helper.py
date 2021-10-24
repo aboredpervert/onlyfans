@@ -916,7 +916,7 @@ def process_profiles(
     json_settings: dict[str, Any],
     proxies: list[str],
     site_name: str,
-    api: OnlyFans.start | Fansly.start | StarsAVN.start,
+    api: Union[OnlyFans.start, Fansly.start, StarsAVN.start],
 ):
     profile_directories: list[str] = json_settings["profile_directories"]
     for profile_directory in profile_directories:

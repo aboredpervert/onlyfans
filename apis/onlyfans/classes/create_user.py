@@ -521,10 +521,10 @@ class create_user:
         final_results:list[create_post] = []
         for result in results:
             content_type = result["responseType"]
-            match content_type:
-                case "post":
+            if True:
+                if content_type == "post":
                     created = create_post(result,self)
                     final_results.append(created)
-                case _:
+                else:
                     print
         return final_results

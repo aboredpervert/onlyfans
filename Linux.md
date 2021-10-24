@@ -73,23 +73,23 @@ If you have changed files and want the new update to "overwrite" them run the fo
 
 ## Installation of Python
 
-1. Install Python3.10
+1. Install Python3.9
 
-	`sudo apt update && sudo apt -y install python3.10`
+	`sudo apt update && sudo apt -y install python3.9`
 
-2. Install the Python3.10 Virtual Enviroment
+2. Install the Python3.9 Virtual Enviroment
 
-	`sudo apt -y install python3.10-dev python3.10-venv`
+	`sudo apt -y install python3.9-dev python3.9-venv`
 
 3. Make our Python Virtual Enviroment
 
-	`python3.10 -m venv venv`
+	`python3.9 -m venv venv`
 
 4. Enter our virtual enviroment
 
 	`source venv/bin/activate`
 
-We now are inside of our python3.10 virtual enviroment. This makes it so that other programs won't screw with our scraper and our scraper won't screw with your other programs or virtual enviroments
+We now are inside of our python3.9 virtual enviroment. This makes it so that other programs won't screw with our scraper and our scraper won't screw with your other programs or virtual enviroments
 
 5. Install Requiremtents
 

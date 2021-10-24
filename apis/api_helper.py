@@ -343,7 +343,7 @@ async def test_proxies(proxies: list[str]):
                 ip = ip.strip()
                 print("Session IP: " + ip + "\n")
                 final_proxies.append(proxy)
-            except python_socks._errors.ProxyConnectionError|python_socks._errors.ProxyError as e:
+            except (python_socks._errors.ProxyConnectionError, python_socks._errors.ProxyError):
                 print(f"Proxy Not Set: {proxy}\n")
                 continue
     return final_proxies
@@ -380,10 +380,10 @@ async def scrape_endpoint_links(links:list[str], session_manager: Union[session_
             continue
         print("Scrape Attempt: " + str(attempt + 1) + "/" + str(max_attempts))
         results = await session_manager.async_requests(links)
-        match type(session_manager.auth):
-            case starsavn_classes.create_auth:
+        if True:
+            if isinstance(session_manager.auth, starsavn_classes.create_auth):
                 results = await starsavn_extras.remove_errors(results)
-            case _:
+            else:
                 results = await onlyfans_extras.remove_errors(results)
         not_faulty = [x for x in results if x]
         faulty = [
