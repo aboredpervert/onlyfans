@@ -100,9 +100,9 @@ class content_types:
 class endpoint_links(object):
     def __init__(
         self,
-        identifier: Optional[str | int] = None,
-        identifier2: Optional[str | int] = None,
-        identifier3: Optional[str | int] = None,
+        identifier: Optional[Union[str, int]] = None,
+        identifier2: Optional[Union[str, int]] = None,
+        identifier3: Optional[Union[str, int]] = None,
         text: str = "",
         only_links: bool = True,
         global_limit: int = 10,
