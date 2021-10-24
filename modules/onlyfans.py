@@ -49,10 +49,11 @@ ignore_type = None
 blacklists = []
 webhook = None
 text_length = None
+timed_allow = set()
 
 
 def assign_vars(json_auth: auth_details, config, site_settings, site_name):
-    global json_config, json_global_settings, json_settings, auto_media_choice, profile_directory, download_directory, metadata_directory, metadata_directory_format, delete_legacy_metadata, overwrite_files, date_format, file_directory_format, filename_format, ignored_keywords, ignore_type, blacklists, webhook, text_length
+    global json_config, json_global_settings, json_settings, auto_media_choice, profile_directory, download_directory, metadata_directory, metadata_directory_format, delete_legacy_metadata, overwrite_files, date_format, file_directory_format, filename_format, ignored_keywords, ignore_type, blacklists, webhook, text_length, timed_allow
 
     json_config = config
     json_global_settings = json_config["settings"]
@@ -78,6 +79,7 @@ def assign_vars(json_auth: auth_details, config, site_settings, site_name):
     blacklists = json_settings["blacklists"]
     webhook = json_settings["webhook"]
     text_length = json_settings["text_length"]
+    timed_allow = set(json_settings["timed_allow"])
 
 
 async def account_setup(
@@ -1058,7 +1060,8 @@ async def media_scraper(
         final_text = rawText if rawText else text
 
         if getattr(post_result, "expiredAt", None) is not None:
-            continue
+            if subscription.username not in timed_allow:
+                continue
 
         if date == "-001-11-30T00:00:00+00:00":
             date_string = master_date

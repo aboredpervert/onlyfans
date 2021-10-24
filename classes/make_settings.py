@@ -179,6 +179,8 @@ class config(object):
                             'blacklists', "")
                         self.webhook = option.get(
                             'webhook', True)
+                        self.timed_allow = option.get(
+                            'timed_allow', [])
 
             class Fansly:
                 def __init__(self, module):
