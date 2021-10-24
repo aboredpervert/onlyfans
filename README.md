@@ -343,6 +343,14 @@ Types: list|str|bool
 
     2. Or simply put the username of the content creator in the list.
 
+### timed_allow
+
+    Default = []
+
+    OnlyFans-specific. Timed content is excluded from scraping unless model is in list.
+
+    Example: "timed_allow": ["belledelphine"]
+
 # Other Tutorials:
 
 >## Running the app via docker
