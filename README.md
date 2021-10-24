@@ -349,6 +349,14 @@ Types: list|int|str|bool
 
     2. Or simply put the username of the content creator in the list.
 
+### timed_allow
+
+    Default = []
+
+    OnlyFans-specific. Timed content is excluded from scraping unless model is in list.
+
+    Example: "timed_allow": ["belledelphine"]
+
 # FAQ
 
 Before troubleshooting, make sure you're using Python 3.9 and the latest commit of the script.
