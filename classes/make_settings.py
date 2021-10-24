@@ -92,6 +92,7 @@ class SiteSettings:
         self.ignore_type = option.get("ignore_type", "")
         self.blacklists = option.get("blacklists", [])
         self.webhook = option.get("webhook", True)
+        self.timed_allow = option.get('timed_allow', [])
 
     def update_site_settings(self, options: dict[str, Any]):
         new_options = copy.copy(options)
