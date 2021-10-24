@@ -85,7 +85,7 @@ class OnlyFansDataScraper(StreamlinedDatascraper):
                 previews = post_result.previews
                 date = post_result.createdAt
                 price = post_result.price
-                if api_type == "Mass Messages":
+                if api_type == "Mass Messages" or api_type == "Messages":
                     media_user = post_result.fromUser
                     media_username = media_user.username
                     if media_username != model_username:
