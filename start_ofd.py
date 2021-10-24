@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
+import sys
 import asyncio
 import os
-import time
 import traceback
 
 import tests.main_test as main_test
@@ -54,7 +54,10 @@ try:
                     input()
                 elif loop_timeout:
                     print("Pausing scraper for " + loop_timeout + " seconds.")
-                    time.sleep(int(loop_timeout))
+                    await asyncio.sleep(float(loop_timeout))
+
+        if sys.platform == "win32":
+            asyncio.set_event_loop_policy(asyncio.WindowsSelectorEventLoopPolicy())
 
         asyncio.run(main())
 except Exception as e:
