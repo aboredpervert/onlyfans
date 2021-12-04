@@ -992,7 +992,6 @@ def open_partial(path: str) -> BinaryIO:
         try:
             return open(partial_path, "xb")
         except FileExistsError:
-            os.unlink(partial_path)
             pass
 
 
